@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { ThemeContext } from "styled-components";
 
 import myImage from "../assets/images/ppremovedbackgroundsmall.png";
 
@@ -8,6 +9,7 @@ const AboutMeContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 3rem;
+  color: ${({ theme }) => theme.textColor}; // Ustawienie koloru tekstu
 `;
 
 const ImageContainer = styled.div`
@@ -26,8 +28,10 @@ const TextContainer = styled.div`
 `;
 
 const AboutMe = () => {
+  const theme = useContext(ThemeContext);
+
   return (
-    <AboutMeContainer id="about">
+    <AboutMeContainer id="about" theme={theme}>
       <TextContainer>
         <h2>About Me</h2>
         <p>

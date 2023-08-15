@@ -36,13 +36,21 @@ const App = () => {
     setTheme(newTheme);
   };
 
+  const themeConfig = {
+    light: {
+      navBackground: "#f0f0f0ad",
+      navText: "#333",
+      textColor: "#333",
+    },
+    dark: {
+      navBackground: "#333333ad",
+      navText: "#fff",
+      textColor: "#fff",
+    },
+  };
+
   return (
-    <ThemeProvider
-      theme={{
-        navBackground: theme === "dark" ? "#333" : "#f0f0f0",
-        navText: theme === "dark" ? "#fff" : "#333",
-      }}
-    >
+    <ThemeProvider theme={themeConfig[theme]}>
       <div>
         <AnimatedGradientBackground theme={theme} />
         <Nav>
