@@ -41,7 +41,7 @@ const SkillBox = styled.div`
 `;
 
 const SkillIcon = styled.div`
-  font-size: 24px;
+  font-size: 60px;
   margin-right: 0.5rem;
 `;
 
