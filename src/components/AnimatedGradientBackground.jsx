@@ -14,11 +14,11 @@ const animateGradient = keyframes`
 
 const GradientBackground = styled.div`
   background: linear-gradient(
-    45deg,
-    ${({ gradientColors }) => gradientColors.join(", ")}
+    90deg,
+    ${({ gradientcolors }) => gradientcolors.join(", ")}
   );
   background-size: 300% 300%;
-  animation: ${animateGradient} 4s alternate infinite;
+  animation: ${animateGradient} 10s alternate infinite;
   position: fixed;
   top: 0;
   left: 0;
@@ -36,21 +36,22 @@ const ImageOverlay = styled.div`
   background-image: url(${patternImg});
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.5;
+  opacity: 0.2;
   z-index: -1;
-  filter: ${({ theme }) => (theme === "light" ? "invert(100%)" : "none")};
+  filter: ${({ theme }) => (theme === "light" ? "invert(100%)" : "none")}
+    opacity(0.5) drop-shadow(2px 4px 6px black);
 `;
 
 const AnimatedGradientBackground = ({ theme }) => {
-  const lightGradientColors = ["#FFFFFF", "#AAD1E6", "#CAB9E0"];
-  const darkGradientColors = ["#6B489D", "#222F5C", "#4F3466"];
+  const darkGradientColors = ["#000", "red", "#923CB5"];
+  const lightGradientColors = ["#fff", "yellow", "#923CB5"];
 
-  const gradientColors =
+  const gradientcolors =
     theme === "dark" ? darkGradientColors : lightGradientColors;
 
   return (
     <>
-      <GradientBackground gradientColors={gradientColors} />
+      <GradientBackground gradientcolors={gradientcolors} />
       <ImageOverlay theme={theme} />;
     </>
   );

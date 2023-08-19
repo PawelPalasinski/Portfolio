@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "styled-components";
 import App from "./App";
 import GlobalStyles from "./GlobalStyles";
@@ -19,7 +19,10 @@ const darkTheme = {
 
 const currentTheme = lightTheme;
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
   <React.StrictMode>
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />

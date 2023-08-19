@@ -5,7 +5,7 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import swImg from "../assets/images/sw.png";
 import pbImg from "../assets/images/pb.png";
 import msImg from "../assets/images/ms.png";
-import psImg from "../assets/images/pixabay.png";
+import psImg from "../assets/images/ps.png";
 import wsImg from "../assets/images/ws.png";
 
 const ProjectsContainer = styled.div`
@@ -13,6 +13,7 @@ const ProjectsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  min-height: 100vh;
 `;
 
 const ProjectCard = styled.div`
@@ -61,6 +62,7 @@ const IconLink = styled.a`
   svg {
     margin-right: 0.25rem;
     font-size: 25px;
+    fill: #000;
   }
 `;
 

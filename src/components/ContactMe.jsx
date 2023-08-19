@@ -1,67 +1,168 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+
+import styled from "styled-components";
+
+const ContactWrapper = styled.div`
+  display: flex;
+  min-height: 100vh;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  min-width: 300px;
+  margin: 0 auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  height: fit-content;
+  label {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000, 0 0 1em #ffd700, 0 0 0.2em #000;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 25px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+    font-size: 16px;
+    resize: vertical;
+  }
+
+  button[type="submit"] {
+    background-color: #ffd700;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 2em;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    text-shadow: 1px 1px 2px #000, 0 0 1em #000, 0 0 0.2em #000;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #fff;
+    color: #ffd700;
+  }
+`;
+
+const StyledError = styled.p`
+  color: red;
+  margin: 0;
+  text-shadow: 1px 1px 2px #000, 0 0 1em #ffd700, 0 0 0.2em #000;
+  font-size: 12px;
+  margin-top: -24px;
+`;
+
+const StyledSuccess = styled.p`
+  color: green;
+  text-shadow: 1px 1px 2px #000, 0 0 1em #ffd700, 0 0 0.2em #000;
+  font-size: 35px;
+  position: fixed;
+  text-align: center;
+`;
+
+const VITE_EMAILJS_SERVICE_ID = "service_8vpo8q8";
+const VITE_EMAILJS_TEMPLATE_ID = "template_23prywb";
+
+const VITE_EMAILJS_PUBLIC_KEY = "wX5QgN6IV0Tdm3PKK";
 
 const ContactMe = () => {
+  const form = useRef();
+  const [errors, setErrors] = useState({});
+  const [isSending, setIsSending] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    if (isSending) return;
+
+    const errors = validateForm();
+
+    if (Object.keys(errors).length === 0) {
+      setIsSending(true);
+
+      emailjs
+        .sendForm(
+          VITE_EMAILJS_SERVICE_ID,
+          VITE_EMAILJS_TEMPLATE_ID,
+          form.current,
+          VITE_EMAILJS_PUBLIC_KEY
+        )
+        .then(
+          (result) => {
+            console.log("SUCCESS!", result.text);
+            setIsSent(true);
+            setIsSending(false);
+          },
+          (error) => {
+            console.log("FAILED...", error.text);
+            setIsSending(false);
+          }
+        );
+    } else {
+      setErrors(errors);
+    }
+  };
+
+  const validateForm = () => {
+    const errors = {};
+    const { user_name, user_email, message } = form.current;
+
+    if (!user_name.value.trim()) {
+      errors.user_name = "Name is required";
+    }
+
+    if (!user_email.value.trim()) {
+      errors.user_email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(user_email.value)) {
+      errors.user_email = "Invalid email address";
+    }
+
+    if (!message.value.trim()) {
+      errors.message = "Message is required";
+    }
+
+    return errors;
+  };
+
   return (
-    <div id="contact">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus,
-        earum. Maiores odit asperiores voluptate tempore corrupti possimus
-        voluptatibus recusandae voluptates perferendis libero, vitae beatae
-        quibusdam enim facilis illum veniam ex. Veritatis, placeat! Consectetur
-        quae nisi esse rem numquam nesciunt assumenda laudantium, atque cumque,
-        dolores delectus hic perspiciatis et provident quia placeat temporibus
-        corrupti iure nostrum. Molestiae inventore doloribus accusamus
-        temporibus nesciunt harum illo obcaecati vitae eveniet dolorem, modi
-        eligendi debitis, sit, officia eum doloremque. Itaque maxime eligendi
-        sequi assumenda aliquid natus tempora ut consequuntur possimus sed,
-        perferendis ducimus explicabo quos, suscipit molestiae pariatur
-        voluptate ullam praesentium, vel dolorem impedit nisi. Nesciunt
-        quibusdam non at exercitationem, aliquid minus magnam consequatur
-        officiis quos, repellat magni, hic id ducimus corrupti! Rerum
-        reprehenderit at sequi, provident repudiandae consequuntur dolorem dicta
-        delectus eaque exercitationem qui cupiditate quis ipsam sint tenetur
-        inventore ipsa ex, iste mollitia error odit totam, quod et id!
-        Asperiores quibusdam iure aliquam minus tempore numquam quo sed
-        doloremque maiores quis laborum laudantium impedit, molestiae, eligendi
-        non veniam, sequi magni id distinctio ipsum nulla maxime eveniet
-        deserunt? In illo enim dolores necessitatibus mollitia quaerat autem
-        quibusdam obcaecati cupiditate vero architecto delectus, optio ex
-        voluptas temporibus corrupti laboriosam porro ducimus corporis rerum,
-        consequatur repellendus veritatis, natus odit. Sed qui accusamus nihil
-        voluptatem mollitia maxime temporibus possimus blanditiis laboriosam,
-        esse labore nobis beatae reprehenderit cum! Vitae quod minima omnis
-        libero, dolor tempora ullam! Similique quae eligendi ex aliquam
-        perspiciatis rerum totam eum quibusdam esse aspernatur quas nihil
-        possimus voluptate nisi, fuga repudiandae aliquid cupiditate sapiente?
-        Autem quia ratione reprehenderit eum facere, minus architecto cum
-        consectetur a asperiores omnis maiores voluptatum ea est aspernatur fuga
-        sapiente laborum nemo magni. Modi odio eos earum aspernatur quas ut quo
-        ratione adipisci velit, molestias fugiat necessitatibus obcaecati
-        voluptate, tenetur debitis id dicta molestiae recusandae architecto.
-        Modi minima architecto corrupti dolores nam beatae qui doloribus laborum
-        deserunt nisi, esse, accusamus ullam provident laudantium sed numquam ut
-        repellat soluta enim eum cum eligendi tempora distinctio magnam? Harum
-        deserunt atque ipsa obcaecati, sit libero voluptatem. Modi cumque sit
-        deserunt earum, exercitationem fugit, nobis consequatur doloremque error
-        non recusandae ad commodi minima, saepe libero nesciunt! Cum deserunt,
-        possimus nisi aspernatur porro ipsum modi? Fugiat exercitationem quas
-        doloremque repudiandae similique nisi itaque facilis, iure autem unde
-        facere sit corporis aliquam, commodi ea magni et veritatis in obcaecati
-        laudantium? Tempore id veritatis, minima optio atque in eveniet, non
-        reiciendis deserunt nobis iste eius! Distinctio quibusdam dicta quasi,
-        soluta nemo ducimus iste harum perferendis quia at esse? Dolor saepe eum
-        voluptate quod rem voluptatem accusamus veritatis velit rerum earum a,
-        et, distinctio illum impedit, nemo exercitationem voluptas magni
-        corporis sit. A natus sit, necessitatibus optio, unde molestias saepe
-        placeat repudiandae maxime perferendis veniam itaque cumque eius
-        provident consequuntur reprehenderit rerum fuga explicabo cum eum
-        cupiditate perspiciatis. Omnis ex sunt possimus provident officia
-        expedita, error in quis similique unde eos enim optio, debitis
-        repellendus non, quia rerum dolore modi. Dolore, praesentium quia,
-        consequuntur est facere id voluptatum, laboriosam non quisquam eaque
-        voluptate rem saepe? Nisi, fugiat ut.
-      </p>
-    </div>
+    <ContactWrapper id="contact">
+      <StyledForm ref={form} onSubmit={sendEmail}>
+        <label htmlFor="user_name">Name</label>
+        <input type="text" name="user_name" id="user_name" />
+        {errors.user_name && <StyledError>{errors.user_name}</StyledError>}
+
+        <label htmlFor="user_email">Email</label>
+        <input type="email" name="user_email" id="user_email" />
+        {errors.user_email && <StyledError>{errors.user_email}</StyledError>}
+
+        <label htmlFor="message">Message</label>
+        <textarea name="message" id="message"></textarea>
+        {errors.message && <StyledError>{errors.message}</StyledError>}
+
+        <button type="submit" disabled={isSending || isSent}>
+          {isSending ? "Sending..." : isSent ? "Sent!" : "Send"}
+        </button>
+        {isSent && <StyledSuccess>Message sent successfully!</StyledSuccess>}
+      </StyledForm>
+    </ContactWrapper>
   );
 };
 
