@@ -1,16 +1,33 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const NameWrapper = styled.div`
   width: 300px;
+  display: flex;
+  flex-direction: column;
 `;
-const Letter = styled.div``;
+
+const LetterWrapper = styled.span`
+  display: inline-block;
+  opacity: 0;
+  animation: ${keyframes`
+    0% {
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  `} 0.5s forwards ease-in-out;
+  animation-delay: ${({ index }) => index * 0.1}s;
+`;
 
 const Text = styled.div`
   font-size: 40px;
   display: flex;
   user-select: none;
-  margin: -50px auto;
+  margin: 0 auto;
 `;
 
 const Wrapper = styled.div`
@@ -32,17 +49,17 @@ const MyName = () => {
   return (
     <NameWrapper>
       <Text>
-        {name.split("").map((l, index) => (
+        {surname.split("").map((l, index) => (
           <Wrapper key={index}>
-            <Letter className="letter">{l}</Letter>
+            <LetterWrapper index={index}>{l}</LetterWrapper>
           </Wrapper>
         ))}
       </Text>
 
       <Text>
-        {surname.split("").map((l, index) => (
+        {name.split("").map((l, index) => (
           <Wrapper key={index}>
-            <Letter className="letter">{l}</Letter>
+            <LetterWrapper index={index}>{l}</LetterWrapper>
           </Wrapper>
         ))}
       </Text>

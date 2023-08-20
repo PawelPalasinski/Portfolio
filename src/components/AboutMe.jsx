@@ -66,6 +66,10 @@ const AboutMe = () => {
 
   return (
     <AboutMeContainer id="about" theme={theme}>
+      <ImageContainer>
+        <Image src={myImage} alt="My Photo" />
+      </ImageContainer>
+
       <NamAndLinksWrapper>
         <MyName />
         <SocialLinks />
@@ -89,9 +93,6 @@ const AboutMe = () => {
           </CvButton>
         </a>
       </TextContainer>
-      <ImageContainer>
-        <Image src={myImage} alt="My Photo" />
-      </ImageContainer>
     </AboutMeContainer>
   );
 };
