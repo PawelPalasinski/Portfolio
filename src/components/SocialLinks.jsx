@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { ThemeContext } from "styled-components";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const LinksList = styled.ul`
@@ -15,17 +16,19 @@ const LinksList = styled.ul`
     & a {
       text-decoration: none;
       svg {
+        fill: ${({ theme }) => theme.textColor};
         margin-right: 0.25rem;
         font-size: 25px;
-        fill: #000;
       }
     }
   }
 `;
 
 const SocialLinks = () => {
+  const theme = useContext(ThemeContext);
+
   return (
-    <LinksList>
+    <LinksList theme={theme}>
       <li>
         <a
           href="https://github.com/PawelPalasinski"

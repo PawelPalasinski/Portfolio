@@ -43,8 +43,8 @@ const ImageOverlay = styled.div`
 `;
 
 const AnimatedGradientBackground = ({ theme }) => {
-  const darkGradientColors = ["#000", "red", "#923CB5"];
-  const lightGradientColors = ["#fff", "yellow", "#923CB5"];
+  const darkGradientColors = ["#000", "#101010", "#400505"];
+  const lightGradientColors = ["#fff", "#c7c7c7", "#8888ff"];
 
   const gradientcolors =
     theme === "dark" ? darkGradientColors : lightGradientColors;

@@ -24,11 +24,30 @@ const NavLink = styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.navText};
   font-weight: bold;
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
 `;
 
-const ToggleButton = styled.button`
+const ToggleButtonTheme = styled.button`
   position: fixed;
   top: 0;
+  right: 125px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 20px 20px 0 0;
+  font-size: 40px;
+  color: ${({ theme }) => theme.textColor};
+`;
+
+const ToggleButtonMenu = styled.button`
+  position: fixed;
+  top: 0;
+  right: 50px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -36,9 +55,8 @@ const ToggleButton = styled.button`
   align-items: center;
   margin: 20px 20px 0 0;
   font-size: 30px;
-  svg {
-    margin-right: 20px;
-  }
+  font-size: 40px;
+  color: ${({ theme }) => theme.textColor};
 `;
 
 const Navigation = ({ theme, toggleTheme }) => {
@@ -55,9 +73,9 @@ const Navigation = ({ theme, toggleTheme }) => {
   return (
     <NavContainer>
       <NavLinks>
-        <ToggleButton onClick={handleMenuToggle}>
+        <ToggleButtonMenu onClick={handleMenuToggle}>
           <AiOutlineMenu />
-        </ToggleButton>
+        </ToggleButtonMenu>
       </NavLinks>
       <NavigationModal isOpen={isMenuOpen} onClose={handleMenuToggle}>
         <NavLink to="about" smooth={true} duration={500} onClick={closeMenu}>
@@ -73,9 +91,9 @@ const Navigation = ({ theme, toggleTheme }) => {
           Contact Me
         </NavLink>
       </NavigationModal>
-      <ToggleButton onClick={toggleTheme}>
+      <ToggleButtonTheme onClick={toggleTheme}>
         {theme === "light" ? <MdDarkMode /> : <MdLightMode />}
-      </ToggleButton>
+      </ToggleButtonTheme>
     </NavContainer>
   );
 };

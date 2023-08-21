@@ -6,6 +6,7 @@ import styled from "styled-components";
 const ContactWrapper = styled.div`
   display: flex;
   min-height: 100vh;
+  align-items: center;
 `;
 
 const StyledForm = styled.form`
@@ -83,7 +84,7 @@ const VITE_EMAILJS_TEMPLATE_ID = "template_23prywb";
 
 const VITE_EMAILJS_PUBLIC_KEY = "wX5QgN6IV0Tdm3PKK";
 
-const ContactMe = () => {
+const ContactMe = ({ theme }) => {
   const form = useRef();
   const [errors, setErrors] = useState({});
   const [isSending, setIsSending] = useState(false);

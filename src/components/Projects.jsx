@@ -11,29 +11,52 @@ import wsImg from "../assets/images/ws.png";
 const ProjectsContainer = styled.div`
   padding: 2rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: space-between;
+  gap: 2rem;
   min-height: 100vh;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+    flex-direction: column;
+  }
 `;
 
 const ProjectCard = styled.div`
   background-color: ${({ theme }) => theme.cardBackground};
+  color: ${({ theme }) => theme.textColor};
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  flex: 1;
+  flex-wrap: wrap;
+  max-width: 350px;
+  height: 480px;
+
+  @media (max-width: 768px) {
+    flex: 1;
+  }
 `;
 
 const Thumbnail = styled.img`
-  height: 250px;
+  max-width: 100%;
+  height: auto;
   border-radius: 4px;
-  margin-right: 1rem;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    max-width: 350px;
+  }
 `;
 
 const ProjectDetails = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 `;
 
 const ProjectTitle = styled.h3`
@@ -49,6 +72,7 @@ const ProjectDescription = styled.p`
 const ProjectLinks = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   margin-top: 0.5rem;
 `;
@@ -62,10 +86,13 @@ const IconLink = styled.a`
   svg {
     margin-right: 0.25rem;
     font-size: 25px;
-    fill: #000;
+    fill: ${({ theme }) => theme.textColor};
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.5);
+    }
   }
 `;
-
 const Projects = () => {
   const projects = [
     {
@@ -119,10 +146,10 @@ const Projects = () => {
             <ProjectDescription>{project.description}</ProjectDescription>
             <ProjectLinks>
               <IconLink href={project.liveDemoLink} target="_blank">
-                <FaExternalLinkAlt /> Live Demo
+                <FaExternalLinkAlt />
               </IconLink>
               <IconLink href={project.githubLink} target="_blank">
-                <FaGithub /> GitHub Repo
+                <FaGithub />
               </IconLink>
             </ProjectLinks>
           </ProjectDetails>

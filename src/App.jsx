@@ -24,11 +24,13 @@ const App = () => {
       navBackground: "#f0f0f0ad",
       navText: "#333",
       textColor: "#333",
+      cardBackground: "#0003",
     },
     dark: {
       navBackground: "#333333ad",
       navText: "#fff",
       textColor: "#fff",
+      cardBackground: "#fff3",
     },
   };
 
@@ -36,10 +38,11 @@ const App = () => {
     <ThemeProvider theme={themeConfig[theme]}>
       <AppContainer>
         <AnimatedGradientBackground theme={theme} />
-        <Navigation theme={theme} toggleTheme={toggleTheme} /> <AboutMe />
+        <Navigation theme={theme} toggleTheme={toggleTheme} />
+        <AboutMe theme={theme} />
         <MySkills theme={theme} />
-        <Projects />
-        <ContactMe />
+        <Projects theme={theme} />
+        <ContactMe theme={theme} />
       </AppContainer>
     </ThemeProvider>
   );

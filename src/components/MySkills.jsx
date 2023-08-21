@@ -18,7 +18,15 @@ import { BiLogoVisualStudio } from "react-icons/bi";
 
 const SkillsContainer = styled.div`
   padding: 2rem;
+  display: flex;
   min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    min-height: 0;
+  }
 `;
 
 const SkillsRow = styled.div`
@@ -27,7 +35,6 @@ const SkillsRow = styled.div`
   overflow-x: auto;
   max-width: 100%;
   margin-bottom: 2rem;
-
   scrollbar-width: thin;
   scrollbar-color: ${({ theme }) => theme.scrollbarThumbColor}
     ${({ theme }) => theme.scrollbarTrackColor};
@@ -50,11 +57,15 @@ const SkillBox = styled.div`
   align-items: center;
   text-align: center;
   flex-shrink: 0;
+  color: ${({ theme }) => theme.textColor};
 `;
 
 const SkillIcon = styled.div`
   font-size: 60px;
   margin-right: 0.5rem;
+  & svg {
+    fill: ${({ theme }) => theme.textColor};
+  }
 `;
 
 const SkillName = styled.span`
