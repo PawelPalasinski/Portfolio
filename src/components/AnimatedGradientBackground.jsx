@@ -34,8 +34,8 @@ const ImageOverlay = styled.div`
   height: 100%;
   width: 100%;
   background-image: url(${patternImg});
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: 30%;
+  background-repeat: repeat;
   opacity: 0.2;
   z-index: -1;
   filter: ${({ theme }) => (theme === "light" ? "invert(100%)" : "none")}

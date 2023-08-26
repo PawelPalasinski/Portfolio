@@ -19,6 +19,10 @@ const LinksList = styled.ul`
         fill: ${({ theme }) => theme.textColor};
         margin-right: 0.25rem;
         font-size: 25px;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          transform: scale(1.5);
+        }
       }
     }
   }

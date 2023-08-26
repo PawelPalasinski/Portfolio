@@ -10,36 +10,42 @@ import SocialLinks from "./SocialLinks";
 
 const AboutMeContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 3rem;
   color: ${({ theme }) => theme.textColor};
-  min-height: 100vh;
+  min-height: 80vh;
 `;
 
-const NamAndLinksWrapper = styled.div`
+const NameAndLinksWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
 const ImageContainer = styled.div`
-  text-align: right;
+  text-align: center;
 `;
 
 const Image = styled.img`
-  width: 20%;
+  width: 60vh;
   min-width: 250px;
   height: auto;
   position: absolute;
-  top: 60px;
+  top: 0;
   left: 0;
   z-index: -1;
+  border-radius: 10%;
 `;
 
 const TextContainer = styled.div`
   flex: 1;
   padding: 0 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  margin-left: 2em;
 `;
 
 const CvButton = styled.button`
@@ -49,15 +55,21 @@ const CvButton = styled.button`
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  background-color: #3498db;
+  background-color: #333;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin: 1em;
 
   &:hover {
-    background-color: red;
+    background-color: #fff;
+    color: #333;
+  }
+
+  & svg {
+    margin-left: 10px;
   }
 `;
 
@@ -68,12 +80,11 @@ const AboutMe = () => {
     <AboutMeContainer id="about" theme={theme}>
       <ImageContainer>
         <Image src={myImage} alt="My Photo" />
+        <NameAndLinksWrapper>
+          <MyName />
+          <SocialLinks />
+        </NameAndLinksWrapper>
       </ImageContainer>
-
-      <NamAndLinksWrapper>
-        <MyName />
-        <SocialLinks />
-      </NamAndLinksWrapper>
 
       <TextContainer>
         <h2>Hi, I'm Paweł</h2>

@@ -9,14 +9,13 @@ const ModalContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #OOO;
+  background-color: ${({ theme }) => theme.navBackground};
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9;
   overflow: auto;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(25px);
 `;
 
 const ModalContent = styled.div`

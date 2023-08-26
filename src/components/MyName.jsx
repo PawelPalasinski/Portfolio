@@ -1,10 +1,12 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
+import GlobalStyles from "../GlobalStyles";
+
 const NameWrapper = styled.div`
-  width: 300px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const LetterWrapper = styled.span`
@@ -24,21 +26,19 @@ const LetterWrapper = styled.span`
 `;
 
 const Text = styled.div`
-  font-size: 40px;
+  font-size: 30px;
   display: flex;
   user-select: none;
-  margin: 0 auto;
+  text-shadow: 0 0 20px #fff;
 `;
 
 const Wrapper = styled.div`
   display: flex;
-  padding-left: 5px;
   padding-top: 20px;
   font-weight: 900;
   text-transform: uppercase;
   text-align: center;
   color: ${({ theme }) => theme.nameColor};
-  text-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   transition: ease-in 5s, ease-out 5s;
 `;
 
@@ -48,8 +48,9 @@ const surname = "Pałasiński";
 const MyName = () => {
   return (
     <NameWrapper>
+      <GlobalStyles />
       <Text>
-        {surname.split("").map((l, index) => (
+        {name.split("").map((l, index) => (
           <Wrapper key={index}>
             <LetterWrapper index={index}>{l}</LetterWrapper>
           </Wrapper>
@@ -57,7 +58,7 @@ const MyName = () => {
       </Text>
 
       <Text>
-        {name.split("").map((l, index) => (
+        {surname.split("").map((l, index) => (
           <Wrapper key={index}>
             <LetterWrapper index={index}>{l}</LetterWrapper>
           </Wrapper>

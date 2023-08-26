@@ -11,10 +11,11 @@ import {
   FaSass,
   FaNpm,
 } from "react-icons/fa";
-import { SiRedux, SiMongodb, SiJest } from "react-icons/si";
+import { SiRedux, SiJest, SiVite } from "react-icons/si";
 import { IoLogoNodejs } from "react-icons/io";
 import { DiMongodb } from "react-icons/di";
 import { BiLogoVisualStudio } from "react-icons/bi";
+import { GiPolarBear } from "react-icons/gi";
 
 const SkillsContainer = styled.div`
   padding: 2rem;
@@ -65,6 +66,10 @@ const SkillIcon = styled.div`
   margin-right: 0.5rem;
   & svg {
     fill: ${({ theme }) => theme.textColor};
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 `;
 
@@ -88,6 +93,8 @@ const MySkills = () => {
     { icon: FaNpm, name: "Npm", category: "Other" },
     { icon: BiLogoVisualStudio, name: "Visual Studio Code", category: "Other" },
     { icon: FaFigma, name: "Figma", category: "Other" },
+    { icon: GiPolarBear, name: "Zustand", category: "Frontend" },
+    { icon: SiVite, name: "Vite", category: "Frontend" },
   ];
 
   const uniqueCategories = [...new Set(skills.map((skill) => skill.category))];

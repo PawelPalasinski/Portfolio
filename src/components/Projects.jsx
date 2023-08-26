@@ -11,13 +11,12 @@ import wsImg from "../assets/images/ws.png";
 const ProjectsContainer = styled.div`
   padding: 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 2rem;
   min-height: 100vh;
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    justify-content: space-between;
     flex-direction: column;
   }
 `;
@@ -27,13 +26,12 @@ const ProjectCard = styled.div`
   color: ${({ theme }) => theme.textColor};
   border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   max-width: 350px;
-  height: 480px;
 
   @media (max-width: 768px) {
     flex: 1;

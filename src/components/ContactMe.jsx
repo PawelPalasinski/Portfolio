@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
+import { FiMail } from "react-icons/fi";
+
 import styled from "styled-components";
 
 const ContactWrapper = styled.div`
@@ -18,8 +20,8 @@ const StyledForm = styled.form`
   min-width: 300px;
   margin: 0 auto;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  background: ${({ theme }) => theme.cardBackground};
+  border-radius: 8px;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -45,35 +47,36 @@ const StyledForm = styled.form`
   }
 
   button[type="submit"] {
-    background-color: #ffd700;
+    background-color: #333;
     color: #fff;
     font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    border-radius: 2em;
+    border-radius: 5px;
     padding: 12px;
-    width: 100%;
+    width: 103%;
     border: none;
     text-shadow: 1px 1px 2px #000, 0 0 1em #000, 0 0 0.2em #000;
   }
 
   button[type="submit"]:hover {
     background-color: #fff;
-    color: #ffd700;
+    color: #333;
   }
 `;
 
 const StyledError = styled.p`
-  color: red;
-  margin: 0;
-  text-shadow: 1px 1px 2px #000, 0 0 1em #ffd700, 0 0 0.2em #000;
+  color: #333;
+  margin: -10px;
+  text-shadow: 1px 1px 2px #000, 0 0 1em #fff, 0 0 0.2em #000;
   font-size: 12px;
-  margin-top: -24px;
+  margin-top: -55px;
+  padding: 30px;
 `;
 
 const StyledSuccess = styled.p`
   color: green;
-  text-shadow: 1px 1px 2px #000, 0 0 1em #ffd700, 0 0 0.2em #000;
+  text-shadow: 1px 1px 2px #000, 0 0 1em #fff, 0 0 0.2em #000;
   font-size: 35px;
   position: fixed;
   text-align: center;
@@ -160,6 +163,7 @@ const ContactMe = ({ theme }) => {
 
         <button type="submit" disabled={isSending || isSent}>
           {isSending ? "Sending..." : isSent ? "Sent!" : "Send"}
+          <FiMail />
         </button>
         {isSent && <StyledSuccess>Message sent successfully!</StyledSuccess>}
       </StyledForm>
