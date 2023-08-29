@@ -5,10 +5,15 @@ import { FiMail } from "react-icons/fi";
 
 import styled from "styled-components";
 
-const ContactWrapper = styled.div`
+const ContactWrapper = styled.section`
   display: flex;
   min-height: 100vh;
   align-items: center;
+  scroll-snap-align: start;
+
+  @media (max-width: 768px) {
+    min-height: 0;
+  }
 `;
 
 const StyledForm = styled.form`

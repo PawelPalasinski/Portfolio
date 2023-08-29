@@ -7,7 +7,7 @@ import { Link } from "react-scroll";
 
 const NavContainer = styled.nav`
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   padding: 1rem;
   z-index: 100;
@@ -22,11 +22,12 @@ const NavLinks = styled.div`
 const NavLink = styled(Link)`
   cursor: pointer;
   text-decoration: none;
+  background-color: ${({ theme }) => theme.navTextBackground};
   color: ${({ theme }) => theme.navText};
   font-weight: bold;
   &:hover {
-    background-color: #fff;
-    color: #000;
+    background-color: ${({ theme }) => theme.navTextBackgroundHover};
+    color: ${({ theme }) => theme.navTextHover};
   }
 `;
 
@@ -42,6 +43,10 @@ const ToggleButtonTheme = styled.button`
   margin: 20px 20px 0 0;
   font-size: 40px;
   color: ${({ theme }) => theme.textColor};
+
+  @media (max-width: 768px) {
+    right: 85px;
+  }
 `;
 
 const ToggleButtonMenu = styled.button`
@@ -54,12 +59,15 @@ const ToggleButtonMenu = styled.button`
   display: flex;
   align-items: center;
   margin: 20px 20px 0 0;
-  font-size: 30px;
   font-size: 40px;
   color: ${({ theme }) => theme.textColor};
+
+  @media (max-width: 768px) {
+    right: 10px;
+  }
 `;
 
-const Navigation = ({ theme, toggleTheme }) => {
+const Navigation = ({ theme, toggleTheme, scrollToSection }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {

@@ -29,7 +29,7 @@ const Text = styled.div`
   font-size: 30px;
   display: flex;
   user-select: none;
-  text-shadow: 0 0 20px #fff;
+  text-shadow: 0 0 20px rgba(31, 38, 135, 0.37);
 `;
 
 const Wrapper = styled.div`

@@ -29,8 +29,8 @@ const CloseButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  color: #fff;
+  background-color: ${({ theme }) => theme.navTextBackground};
+  color: ${({ theme }) => theme.navText};
   font-size: 25px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -39,9 +39,10 @@ const CloseButton = styled.button`
   heigth: 60px;
   border: none;
   text-shadow: 1px 1px 2px #000, 0 0 1em #000, 0 0 0.2em #000;
+  overflow: hidden;
   &:hover {
-    background-color: #fff;
-    color: #000;
+    background-color: ${({ theme }) => theme.navTextBackgroundHover};
+    color: ${({ theme }) => theme.navTextHover};
   }
 `;
 

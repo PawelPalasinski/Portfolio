@@ -3,39 +3,29 @@ import styled from "styled-components";
 import { ThemeContext } from "styled-components";
 import { FaFilePdf } from "react-icons/fa";
 
-import myImage from "../assets/images/ppremovedbackgroundsmall.png";
-
 import MyName from "./MyName";
 import SocialLinks from "./SocialLinks";
 
-const AboutMeContainer = styled.div`
+const AboutMeContainer = styled.section`
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 3rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: no-wrap;
+  padding: 4rem;
   color: ${({ theme }) => theme.textColor};
   min-height: 80vh;
+  flex-direction: column;
+  scroll-snap-align: start;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    gap: 2rem;
+  }
 `;
 
 const NameAndLinksWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const ImageContainer = styled.div`
-  text-align: center;
-`;
-
-const Image = styled.img`
-  width: 60vh;
-  min-width: 250px;
-  height: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  border-radius: 10%;
 `;
 
 const TextContainer = styled.div`
@@ -45,7 +35,6 @@ const TextContainer = styled.div`
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(5px);
   border-radius: 10px;
-  margin-left: 2em;
 `;
 
 const CvButton = styled.button`
@@ -78,13 +67,10 @@ const AboutMe = () => {
 
   return (
     <AboutMeContainer id="about" theme={theme}>
-      <ImageContainer>
-        <Image src={myImage} alt="My Photo" />
-        <NameAndLinksWrapper>
-          <MyName />
-          <SocialLinks />
-        </NameAndLinksWrapper>
-      </ImageContainer>
+      <NameAndLinksWrapper>
+        <MyName />
+        <SocialLinks />
+      </NameAndLinksWrapper>
 
       <TextContainer>
         <h2>Hi, I'm Paweł</h2>

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
+import { animateScroll as scroll } from "react-scroll";
+
+import Navigation from "./components/Navigation";
+import AnimatedGradientBackground from "./components/AnimatedGradientBackground";
 import AboutMe from "./components/AboutMe";
 import MySkills from "./components/MySkills";
 import Projects from "./components/Projects";
 import ContactMe from "./components/ContactMe";
-import AnimatedGradientBackground from "./components/AnimatedGradientBackground";
-import Navigation from "./components/Navigation";
 
-const AppContainer = styled.div`
-  position: relative;
+const AppContainer = styled.main`
+  height: 100vh;
 `;
 
 const App = () => {
@@ -22,23 +24,40 @@ const App = () => {
   const themeConfig = {
     light: {
       navBackground: "#f0f0f0ad",
-      navText: "#333",
+      navText: "#000",
+      navTextHover: "#fff",
+      navTextBackground: `transparent`,
+      navTextBackgroundHover: `#000`,
       textColor: "#333",
       cardBackground: "#0003",
     },
     dark: {
       navBackground: "#333333ad",
       navText: "#fff",
+      navTextHover: "#000",
+      navTextBackground: `transparent`,
+      navTextBackgroundHover: `#fff`,
       textColor: "#fff",
       cardBackground: "#fff3",
     },
+  };
+
+  const scrollToSection = (sectionId) => {
+    scroll.scrollTo(sectionId, {
+      smooth: true,
+      duration: 500,
+    });
   };
 
   return (
     <ThemeProvider theme={themeConfig[theme]}>
       <AppContainer>
         <AnimatedGradientBackground theme={theme} />
-        <Navigation theme={theme} toggleTheme={toggleTheme} />
+        <Navigation
+          theme={theme}
+          toggleTheme={toggleTheme}
+          scrollToSection={scrollToSection}
+        />
         <AboutMe theme={theme} />
         <MySkills theme={theme} />
         <Projects theme={theme} />

@@ -8,20 +8,21 @@ import msImg from "../assets/images/ms.png";
 import psImg from "../assets/images/ps.png";
 import wsImg from "../assets/images/ws.png";
 
-const ProjectsContainer = styled.div`
+const ProjectsContainer = styled.section`
   padding: 2rem;
   display: flex;
   justify-content: center;
   gap: 2rem;
   min-height: 100vh;
   flex-wrap: wrap;
+  scroll-snap-align: start;
 
   @media (max-width: 768px) {
     flex-direction: column;
   }
 `;
 
-const ProjectCard = styled.div`
+const ProjectCard = styled.article`
   background-color: ${({ theme }) => theme.cardBackground};
   color: ${({ theme }) => theme.textColor};
   border-radius: 8px;

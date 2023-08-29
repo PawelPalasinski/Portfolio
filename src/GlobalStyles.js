@@ -8,6 +8,13 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Michroma', sans-serif;
   }
 
+  ul {
+    display: inline;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
   button {
     font-family: 'Michroma', sans-serif;
   }
