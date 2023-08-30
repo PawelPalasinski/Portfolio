@@ -89,7 +89,6 @@ const StyledSuccess = styled.p`
 
 const VITE_EMAILJS_SERVICE_ID = "service_8vpo8q8";
 const VITE_EMAILJS_TEMPLATE_ID = "template_23prywb";
-
 const VITE_EMAILJS_PUBLIC_KEY = "wX5QgN6IV0Tdm3PKK";
 
 const ContactMe = ({ theme }) => {
