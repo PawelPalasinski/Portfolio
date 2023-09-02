@@ -62,6 +62,10 @@ const StyledForm = styled.form`
     width: 103%;
     border: none;
     text-shadow: 1px 1px 2px #000, 0 0 1em #000, 0 0 0.2em #000;
+
+    & svg {
+      margin-left: 10px;
+    }
   }
 
   button[type="submit"]:hover {

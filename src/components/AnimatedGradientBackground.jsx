@@ -52,7 +52,7 @@ const AnimatedGradientBackground = ({ theme }) => {
   return (
     <>
       <GradientBackground gradientcolors={gradientcolors} />
-      <ImageOverlay theme={theme} />;
+      <ImageOverlay theme={theme} />
     </>
   );
 };
