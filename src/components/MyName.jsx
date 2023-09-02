@@ -4,6 +4,8 @@ import styled, { keyframes } from "styled-components";
 import GlobalStyles from "../GlobalStyles";
 
 const NameWrapper = styled.div`
+  padding-top: 50px;
+  font-family: "Press Start 2P", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;

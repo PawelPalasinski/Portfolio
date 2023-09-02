@@ -10,6 +10,7 @@ const ContactWrapper = styled.section`
   min-height: 100vh;
   align-items: center;
   scroll-snap-align: start;
+  padding: 32px;
 
   @media (max-width: 768px) {
     min-height: 0;
@@ -21,21 +22,24 @@ const StyledForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  min-width: 300px;
+  width: 50vw;
   margin: 0 auto;
   padding: 30px;
   background: ${({ theme }) => theme.cardBackground};
   border-radius: 8px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  font-weight: bold;
   border: 1px solid rgba(255, 255, 255, 0.18);
   height: fit-content;
+
+  @media (max-width: 768px) {
+    flex: 1;
+  }
+
   label {
     margin-bottom: 10px;
     font-size: 18px;
-    color: #fff;
-    text-shadow: 1px 1px 2px #000, 0 0 1em #ffd700, 0 0 0.2em #000;
+    color: ${({ theme }) => theme.textColor};
+    font-weight: bold;
   }
 
   input,
@@ -51,9 +55,13 @@ const StyledForm = styled.form`
     resize: vertical;
   }
 
+  #message {
+    height: 200px;
+  }
+
   button[type="submit"] {
-    background-color: #333;
-    color: #fff;
+    background-color: ${({ theme }) => theme.buttonColor};
+    color: ${({ theme }) => theme.textColor};
     font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -61,16 +69,15 @@ const StyledForm = styled.form`
     padding: 12px;
     width: 103%;
     border: none;
-    text-shadow: 1px 1px 2px #000, 0 0 1em #000, 0 0 0.2em #000;
-
+    font-weight: bold;
     & svg {
       margin-left: 10px;
     }
   }
 
   button[type="submit"]:hover {
-    background-color: #fff;
-    color: #333;
+    background-color: ${({ theme }) => theme.buttonHover};
+    color: ${({ theme }) => theme.textHover};
   }
 `;
 

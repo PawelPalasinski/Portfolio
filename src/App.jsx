@@ -8,6 +8,7 @@ import AboutMe from "./components/AboutMe";
 import MySkills from "./components/MySkills";
 import Projects from "./components/Projects";
 import ContactMe from "./components/ContactMe";
+import Footer from "./components/Footer";
 
 const AppContainer = styled.main`
   height: 100vh;
@@ -29,6 +30,9 @@ const App = () => {
       navTextBackground: `transparent`,
       navTextBackgroundHover: `#000`,
       textColor: "#333",
+      textHover: "#fff",
+      buttonColor: "#fff",
+      buttonHover: "#000",
       cardBackground: "#0003",
     },
     dark: {
@@ -38,6 +42,9 @@ const App = () => {
       navTextBackground: `transparent`,
       navTextBackgroundHover: `#fff`,
       textColor: "#fff",
+      textHover: "#000",
+      buttonColor: "#000",
+      buttonHover: "#fff",
       cardBackground: "#fff3",
     },
   };
@@ -62,6 +69,7 @@ const App = () => {
         <MySkills theme={theme} />
         <Projects theme={theme} />
         <ContactMe theme={theme} />
+        <Footer theme={theme} />
       </AppContainer>
     </ThemeProvider>
   );
