@@ -22,6 +22,7 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 45px;
+  transition: all 0.3s ease-in-out;
 `;
 
 const CloseButton = styled.button`

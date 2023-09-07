@@ -50,6 +50,7 @@ const CvButton = styled.button`
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 1em;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     background-color: #fff;

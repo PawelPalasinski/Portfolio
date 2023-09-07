@@ -25,6 +25,7 @@ const NavLink = styled(Link)`
   background-color: ${({ theme }) => theme.navTextBackground};
   color: ${({ theme }) => theme.navText};
   font-weight: bold;
+  transition: all 0.3s ease-in-out;
   &:hover {
     background-color: ${({ theme }) => theme.navTextBackgroundHover};
     color: ${({ theme }) => theme.navTextHover};
